@@ -1,0 +1,47 @@
+{
+  "name": "basicgandd",
+  "version": "1.0.0",
+  "description": "BasicGandD",
+  "main": "dist/app.js",
+  "type": "module",
+  "scripts": {
+    "start": "tsc && node dist/app.js",
+    "build": "tsc",
+    "migration:generate": "npx drizzle-kit generate --config=./drizzle.config.ts",
+    "lint": "eslint src/ --ext .ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tae-ookchung/BasicGandD.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tae-ookchung/BasicGandD/issues"
+  },
+  "homepage": "https://github.com/tae-ookchung/BasicGandD#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.21.0",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/pg": "^8.11.11",
+    "eslint": "^9.21.0",
+    "globals": "^16.0.0",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.25.0"
+  },
+  "dependencies": {
+    "@apollo/server": "^4.11.3",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "drizzle-kit": "^0.30.5",
+    "drizzle-orm": "^0.40.0",
+    "drizzle-zod": "^0.7.0",
+    "express": "^4.21.2",
+    "graphql": "^16.10.0",
+    "pg": "^8.13.3"
+  }
+}
