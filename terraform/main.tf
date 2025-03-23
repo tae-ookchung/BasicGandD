@@ -12,7 +12,7 @@ provider "aws" {
 
 resource "aws_instance" "cc-dev-server" {
   # Machine images are different across regions
-  ami = "ami-03fd334507439f4d1" #to change
+  ami = "ami-####" #to change
   instance_type = "t2.small"
   root_block_device {
     volume_size = 64
