@@ -6,8 +6,10 @@
   "type": "module",
   "scripts": {
     "start": "tsc && node dist/app.js",
+    "server": "tsc && node dist/server.js",
     "build": "tsc",
     "migration:generate": "npx drizzle-kit generate --config=./drizzle.config.ts",
+    "migration:generateserver": "npx drizzle-kit generate --config=./drizzle.server.config.ts",
     "lint": "eslint src/ --ext .ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -26,6 +28,7 @@
     "@eslint/js": "^9.21.0",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
+    "@types/node": "^24.0.3",
     "@types/pg": "^8.11.11",
     "eslint": "^9.21.0",
     "globals": "^16.0.0",

@@ -13,7 +13,7 @@ const schema = `#graphql
   }
 
   type Query {
-    me: User
+    me: String
   }
 
   type Mutation {

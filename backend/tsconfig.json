@@ -7,7 +7,7 @@
     "sourceMap": true,
     "outDir": "dist",
     "skipLibCheck": true,
-    "baseUrl": "",
+    "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
     }
