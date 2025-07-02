@@ -6,14 +6,14 @@ const schema = `#graphql
   }
 
   type Mutation {
-    createUser(name: String!, age: Int!, isWeeb: Boolean!): User
+    createUser(name: String!, age: Int!, isweeb: Boolean!): User
   }
 
   type User {
     id: ID!
     name: String!
-    age: Int
-    isWeeb: Boolean
+    age: Int!
+    isweeb: Boolean!
   }
 `;
 

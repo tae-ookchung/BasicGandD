@@ -1,34 +1,24 @@
-const users = [
-  { id: '1', name: 'Alice', age: 30, isWeeb: true },
-  { id: '2', name: 'Bob', age: 25, isWeeb: false },
-  { id: '3', name: 'Charlie', age: 28, isWeeb: true },
-];
+import { db } from '../db_server/index.js';
+import { users } from '../db_server/schema/schema.js';
+import { eq } from 'drizzle-orm';
 
-const resolver = {
+export const resolvers = {
   Query: {
-    hello: () => 'Hello world!',
-    getUsers: () => { 
-      return users;
+    getUsers: async () => {
+      return await db.select().from(users);
     },
-    getUserById: (parent, args) => {
-      const id = args.id;
-      return users.find(user => user.id === id);
-    }
+    getUserById: async (_: any, { id }: { id: number }) => {
+      const result = await db.select().from(users).where(eq(users.id, id));
+      return result[0];
+    },
   },
   Mutation: {
-    createUser: (parent, args) => {
-      const { name, age, isWeeb } = args;
-      const newUser = {
-        id: String(users.length + 1), // Simple ID generation
-        name,
-        age,
-        isWeeb
-      };
-      console.log(`Creating user: ${JSON.stringify(newUser)}`);
-      users.push(newUser);
-      return newUser;
-    }
-  }
+    createUser: async (
+      _: any, 
+      { name, age, isweeb }: { name: string; age: number; isweeb: boolean }
+    ) => {
+      const newUser = await db.insert(users).values({ name, age, isweeb } as any).returning();
+      return newUser[0];
+    },
+  },
 };
-
-export const resolvers = [resolver];

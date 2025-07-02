@@ -8,7 +8,7 @@ const GET_USERS = gql`#graphql
       id
       name
       age
-      isWeeb
+      isweeb
     }
   }
 `;
@@ -19,18 +19,18 @@ const GET_USER_BY_ID = gql`#graphql
       id
       name
       age
-      isWeeb
+      isweeb
     }
   }
 `;
 
 const CREATE_USER = gql`#graphql
-  mutation CreateUser($name: String!, $age: Int!, $isWeeb: Boolean!) {
-    createUser(name: $name, age: $age, isWeeb: $isWeeb) {
+  mutation CreateUser($name: String!, $age: Int!, $isweeb: Boolean!) {
+    createUser(name: $name, age: $age, isweeb: $isweeb) {
       id
       name
       age
-      isWeeb
+      isweeb
     }
   }
 `;
@@ -38,11 +38,11 @@ const CREATE_USER = gql`#graphql
 type NewUser = {
   name: string;
   age: string;
-  isWeeb: boolean;
+  isweeb: boolean;
 };
 
 function App() {
-  const [newUser, setNewUser] = useState<NewUser>({ name: '', age: '', isWeeb: false });
+  const [newUser, setNewUser] = useState<NewUser>({ name: '', age: '', isweeb: false });
   const { data: getUsersData, error: getUsersError, loading: getUsersLoading } = useQuery(GET_USERS);
   const {
     data: getUserByIdData,
@@ -68,11 +68,11 @@ function App() {
       variables: {
         name: newUser.name,
         age: Number(newUser.age),
-        isWeeb: newUser.isWeeb || false,
+        isweeb: newUser.isweeb || false,
       },
     }).then((response) => {
       console.log("User created:", response.data.createUser);
-      setNewUser({ name: '', age: '', isWeeb: false });
+      setNewUser({ name: '', age: '', isweeb: false });
     }).catch((error) => {
       console.error("Error creating user:", error);
       alert("Failed to create user. Please try again.");
@@ -97,7 +97,7 @@ function App() {
         <label> Weeb? </label>
         <input
           type="checkbox"
-          onChange={(e) => setNewUser((prev) => ({ ...prev, isWeeb: e.target.checked }))}
+          onChange={(e) => setNewUser((prev) => ({ ...prev, isweeb: e.target.checked }))}
         />
         <button onClick={handleCreateUser}> Create User </button>
       </div>
@@ -113,7 +113,7 @@ function App() {
           <div>
             <p> Name: {user.name} </p>
             <p> Age: {user.age} </p>
-            <p> Weeb: {user.isWeeb ? "Yes" : "No"} </p>
+            <p> Weeb: {user.isweeb ? "Yes" : "No"} </p>
           </div>
         ))}
 
@@ -127,7 +127,7 @@ function App() {
             <p>ID: {getUserByIdData.getUserById.id}</p>
             <p>Name: {getUserByIdData.getUserById.name}</p>
             <p>Age: {getUserByIdData.getUserById.age}</p>
-            <p>Weeb: {getUserByIdData.getUserById.isWeeb ? "Yes" : "No"}</p>
+            <p>Weeb: {getUserByIdData.getUserById.isweeb ? "Yes" : "No"}</p>
           </div>
         )}
       </div>
